@@ -3,6 +3,7 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user.dart';
+import 'package:http/http.dart' as http;
 
 class AuthService {
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
@@ -57,5 +58,10 @@ class AuthService {
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_sessionKey);
+  }
+
+  Future<String?> getCurrentUserId() async {
+    final user = await getCurrentUser();
+    return user?.username;
   }
 } 
