@@ -56,6 +56,16 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
       try {
         final userId = await _authService.getCurrentUserId();
+        if (userId == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Anda harus login terlebih dahulu')),
+          );
+          setState(() {
+            _isLoading = false;
+          });
+          return;
+        }
+        
         final feedback = UserFeedback(
           id: const Uuid().v4(),
           userId: userId,
