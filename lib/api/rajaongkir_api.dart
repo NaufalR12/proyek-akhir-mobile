@@ -44,6 +44,7 @@ Future<List<City>> fetchCities(String provinceId) async {
 }
 
 Future<List<CostResult>> getCost(String origin, String destination, int weight, String courier) async {
+  
   final response = await http.post(
     Uri.parse('$baseUrl/cost'),
     headers: {
@@ -59,10 +60,13 @@ Future<List<CostResult>> getCost(String origin, String destination, int weight, 
   );
 
   if (response.statusCode != 200) {
+    print('Response body (error): ${response.body}'); // << Tambahkan ini
     throw Exception('Failed to get cost');
   }
 
   final jsonBody = jsonDecode(response.body);
+  print('Response body: $jsonBody'); // << Tambahkan untuk memastikan formatnya
+
   final results = jsonBody['rajaongkir']?['results'];
   if (results != null && results is List && results.isNotEmpty) {
     final costs = results[0]['costs'] as List?;
