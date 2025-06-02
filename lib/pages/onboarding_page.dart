@@ -25,7 +25,7 @@ class OnboardingPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Center(
                   child: Image.asset(
                     'assets/onboarding1.png',
@@ -33,12 +33,12 @@ class OnboardingPage extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(height: 32),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                const SizedBox(height: 32),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 28.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Bandingkan Ongkir,',
                         style: TextStyle(
@@ -60,7 +60,7 @@ class OnboardingPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 0.0,
@@ -72,16 +72,16 @@ class OnboardingPage extends StatelessWidget {
                       Container(
                         width: 8,
                         height: 8,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.black,
                           shape: BoxShape.circle,
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Container(
                         width: 8,
                         height: 8,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.black26,
                           shape: BoxShape.circle,
                         ),
@@ -89,7 +89,7 @@ class OnboardingPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 18),
+                const SizedBox(height: 18),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
@@ -100,7 +100,7 @@ class OnboardingPage extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AuthChoicePage(),
+                            builder: (context) => const AuthChoicePage(),
                           ),
                         );
                       },

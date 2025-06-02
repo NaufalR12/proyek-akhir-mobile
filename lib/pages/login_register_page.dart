@@ -47,7 +47,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         if (!mounted) return;
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => const HomePage()),
         );
       } else {
         _showSnackbar('Username atau Password tidak sesuai');
@@ -80,18 +80,18 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
       child: GestureDetector(
         onTap: () => setState(() => tab = value),
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
-            color: selected ? Colors.white : Color(0xFFF3F3F3),
+            color: selected ? Colors.white : const Color(0xFFF3F3F3),
             borderRadius: BorderRadius.only(
-              topLeft: isLeft ? Radius.circular(30) : Radius.circular(0),
-              bottomLeft: isLeft ? Radius.circular(30) : Radius.circular(0),
-              topRight: !isLeft ? Radius.circular(30) : Radius.circular(0),
-              bottomRight: !isLeft ? Radius.circular(30) : Radius.circular(0),
+              topLeft: isLeft ? const Radius.circular(30) : const Radius.circular(0),
+              bottomLeft: isLeft ? const Radius.circular(30) : const Radius.circular(0),
+              topRight: !isLeft ? const Radius.circular(30) : const Radius.circular(0),
+              bottomRight: !isLeft ? const Radius.circular(30) : const Radius.circular(0),
             ),
             boxShadow: selected
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.black26,
                       blurRadius: 16,
                       offset: Offset(0, 4),
@@ -99,7 +99,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                   ]
                 : [],
           ),
-          padding: EdgeInsets.symmetric(vertical: 18),
+          padding: const EdgeInsets.symmetric(vertical: 18),
           alignment: Alignment.center,
           child: Text(
             label,
@@ -155,16 +155,16 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 36),
+                    const SizedBox(height: 36),
                     Image.asset('assets/login-register.png', height: 140),
-                    SizedBox(height: 36),
+                    const SizedBox(height: 36),
                     Row(
                       children: [
                         _tabButton('Masuk', 'login', true),
                         _tabButton('Daftar', 'register', false),
                       ],
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     if (tab == 'login')
                       Form(
                         key: _formKeyLogin,
@@ -180,17 +180,17 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                   vertical: 18,
                                   horizontal: 20,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                               validator: (v) => v == null || v.isEmpty
                                   ? 'Username wajib diisi'
                                   : null,
                             ),
-                            SizedBox(height: 18),
+                            const SizedBox(height: 18),
                             TextFormField(
                               controller: _loginPassword,
                               decoration: InputDecoration(
@@ -201,18 +201,18 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                   vertical: 18,
                                   horizontal: 20,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                               obscureText: true,
                               validator: (v) => v == null || v.isEmpty
                                   ? 'Password wajib diisi'
                                   : null,
                             ),
-                            SizedBox(height: 32),
+                            const SizedBox(height: 32),
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
@@ -223,9 +223,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                  padding: EdgeInsets.symmetric(vertical: 16),
+                                  padding: const EdgeInsets.symmetric(vertical: 16),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   'Daftar',
                                   style: TextStyle(
                                     fontSize: 20,
@@ -252,17 +252,17 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                   vertical: 18,
                                   horizontal: 20,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                               validator: (v) => v == null || v.isEmpty
                                   ? 'Email wajib diisi'
                                   : null,
                             ),
-                            SizedBox(height: 18),
+                            const SizedBox(height: 18),
                             TextFormField(
                               controller: _regUsername,
                               decoration: InputDecoration(
@@ -273,17 +273,17 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                   vertical: 18,
                                   horizontal: 20,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                               validator: (v) => v == null || v.isEmpty
                                   ? 'Username wajib diisi'
                                   : null,
                             ),
-                            SizedBox(height: 18),
+                            const SizedBox(height: 18),
                             TextFormField(
                               controller: _regPassword,
                               decoration: InputDecoration(
@@ -294,18 +294,18 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.white,
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                   vertical: 18,
                                   horizontal: 20,
                                 ),
                               ),
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                               obscureText: true,
                               validator: (v) => v == null || v.isEmpty
                                   ? 'Password wajib diisi'
                                   : null,
                             ),
-                            SizedBox(height: 32),
+                            const SizedBox(height: 32),
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
@@ -316,9 +316,9 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
                                   ),
-                                  padding: EdgeInsets.symmetric(vertical: 16),
+                                  padding: const EdgeInsets.symmetric(vertical: 16),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   'Daftar',
                                   style: TextStyle(
                                     fontSize: 20,

@@ -48,7 +48,7 @@ class AuthChoicePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
-                Text(
+                const Text(
                   'Hello, Selamat Datang!',
                   style: TextStyle(
                     fontSize: 20,
@@ -57,7 +57,7 @@ class AuthChoicePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                Text(
+                const Text(
                   'Masuk atau Daftarkan Dirimu!',
                   style: TextStyle(fontSize: 13, color: Colors.black54),
                 ),
@@ -74,7 +74,7 @@ class AuthChoicePage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    LoginRegisterPage(initialTab: 'register'),
+                                    const LoginRegisterPage(initialTab: 'register'),
                               ),
                             );
                           },
@@ -84,9 +84,9 @@ class AuthChoicePage extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Daftar',
                             style: TextStyle(
                               fontSize: 18,
@@ -95,7 +95,7 @@ class AuthChoicePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -104,20 +104,20 @@ class AuthChoicePage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    LoginRegisterPage(initialTab: 'login'),
+                                    const LoginRegisterPage(initialTab: 'login'),
                               ),
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFF3F3F3),
+                            backgroundColor: const Color(0xFFF3F3F3),
                             foregroundColor: Colors.black54,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             elevation: 0,
                           ),
-                          child: Text(
+                          child: const Text(
                             'Masuk',
                             style: TextStyle(
                               fontSize: 18,

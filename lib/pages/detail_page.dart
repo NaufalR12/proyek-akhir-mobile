@@ -8,7 +8,13 @@ class DetailPage extends StatefulWidget {
   final String? berat;
   final String? kurir;
 
-  const DetailPage({super.key, this.kota_asal, this.kota_tujuan, this.berat, this.kurir});
+  const DetailPage({
+    super.key,
+    this.kota_asal,
+    this.kota_tujuan,
+    this.berat,
+    this.kurir,
+  });
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -16,7 +22,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   List listData = [];
-  var strKey = "";
+  final String strKey = "aff1002c5b65baf69b177eeb09f64a30";
 
   @override
   void initState() {
@@ -26,25 +32,30 @@ class _DetailPageState extends State<DetailPage> {
 
   Future getData() async {
     try {
-      final response = await http.post(
-        Uri.parse(
-          "https://api.rajaongkir.com/starter/cost",
-        ),
-        body: {
+      var response = await http.post(
+        Uri.parse("https://api.rajaongkir.com/starter/cost"),
+        headers: {
           "key": strKey,
-          "origin": widget.kota_asal,
-          "destination": widget.kota_tujuan,
-          "weight": widget.berat,
-          "courier": widget.kurir
+          "content-type": "application/x-www-form-urlencoded",
         },
-      ).then((value) {
-        var data = jsonDecode(value.body);
-        setState(() {
-          listData = data['rajaongkir']['results'][0]['costs'];
-        });
+        body: {
+          "origin": widget.kota_asal ?? '',
+          "destination": widget.kota_tujuan ?? '',
+          "weight": widget.berat ?? '0',
+          "courier": widget.kurir ?? '',
+        },
+      );
+
+      var data = jsonDecode(response.body);
+      var results = data['rajaongkir']?['results'];
+
+      setState(() {
+        listData = results != null && results.isNotEmpty
+            ? results[0]['costs']
+            : [];
       });
     } catch (e) {
-      print(e);
+      print("Error fetching data: $e");
     }
   }
 
@@ -52,26 +63,19 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            "Detail Ongkos Kirim ${widget.kurir.toString().toUpperCase()}"),
+        title: Text("Detail Ongkos Kirim ${widget.kurir?.toUpperCase() ?? ""}"),
       ),
-      body: FutureBuilder(
-        future: getData(),
-        initialData: "Loading",
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData && snapshot.data == "Loading") {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return ListView.builder(
+      body: listData.isEmpty
+          ? const Center(child: Text("No data found"))
+          : ListView.builder(
               itemCount: listData.length,
               itemBuilder: (_, index) {
                 return Card(
                   margin: const EdgeInsets.all(10),
-                  clipBehavior: Clip.antiAlias,
                   elevation: 5,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   color: Colors.white,
                   child: ListTile(
                     title: Text("${listData[index]['service']}"),
@@ -79,26 +83,22 @@ class _DetailPageState extends State<DetailPage> {
                     trailing: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         Text(
                           "Rp ${listData[index]['cost'][0]['value']}",
-                          style: const TextStyle(fontSize: 20, color: Colors.red),
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.red,
+                          ),
                         ),
-                        const SizedBox(
-                          height: 3,
-                        ),
-                        Text("${listData[index]['cost'][0]['etd']} Days")
+                        const SizedBox(height: 3),
+                        Text("${listData[index]['cost'][0]['etd']} Days"),
                       ],
                     ),
                   ),
                 );
               },
-            );
-          }
-        },
-      ),
+            ),
     );
   }
 }

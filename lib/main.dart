@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'Projek Prak Mobile',
       theme: ThemeData(
         fontFamily: 'Poppins',
-        scaffoldBackgroundColor: Color(0xFFF9F9F9),
+        scaffoldBackgroundColor: const Color(0xFFF9F9F9),
       ),
-      home: OnboardingPage(),
+      home: const OnboardingPage(),
     );
   }
 }
